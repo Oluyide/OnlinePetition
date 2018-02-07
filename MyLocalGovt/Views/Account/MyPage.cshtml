@@ -1,0 +1,50 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+@{
+    ViewBag.Title = "MyPage";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+@foreach (var Mine in Model.MyPetitionsList)
+                    {
+
+                       
+
+
+
+
+                            <div class="box5">
+
+                                <h5 style="text-transform:uppercase; font-family:'Adobe Gothic Std';">@Html.DisplayFor(x => Mine.Title) </h5> <span><h6><strong>by:(Gregory White) </strong> @Mine.PetDate</h6> </span>
+
+
+
+                                <div class="">
+                                    <div class="">
+                                        <span>
+                                            @if (Mine.NameOfFile != null)
+                                        {  <a href="~/PetitionSignature/SignatureIndex/@Mine.PetitionId"> <img style=" width:100%; height: 200px; margin-bottom: 2%; margin-right: 3%;" src="~/images/Files/@Mine.NameOfFile" /> </a> }
+
+                                        else
+                                        { <a href="~/PetitionSignature/SignatureIndex/@Mine.PetitionId"> <img style=" width:100%; height: 200px; margin-bottom: 2%; margin-right: 3%;" src="~/images/white.jpg" /></a>  }
+                                            <span>
+                                                <a class="btn-block btn-lg btn-danger" href="~/PetitionSignature/SignatureIndex/@Mine.PetitionId" style="text-decoration:none; font-family:'Adobe Gothic Std'; text-align:center;">Support Petition</a>
+                                            </span>
+                                            <ul>
+
+                                                <a href="#" style="color: darkblue;text-decoration:none; font-family:'Adobe Gothic Std';margin-right: 2%; margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-facebook-official"></i></a>
+                                                <a href="#" style="color: darkcyan;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-twitter-square"></i></a>
+                                                <a href="#" style="color: red;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-google-plus-square"></i></a>
+                                                <a href="#" style="color: deepskyblue;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-linkedin-square"></i></a>
+                                                <b style="font-family:'Adobe Gothic Std'; color:green;">100, 500 Supporters</b>
+                                            </ul>
+                                        </span>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                  

@@ -1,0 +1,176 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+@{
+    ViewBag.Title = "Start A Petition";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+}
+
+
+<div class="box3">
+    
+        <div>
+            @if (TempData["Success"] != null)
+            {
+                <div style="color:green; font-size:20px" class="alert alert-success">
+                    @TempData["Success"].ToString();
+                    <a href="#" class="close">&times;</a>
+                </div>
+            }
+        </div>
+
+
+
+        <div class="box3">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Petition", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+                    <div class="col-md-4">
+                        <div class="box7">
+                            <div style="font-family: 'Adobe Gothic Std'; padding: 1% 3%; font-size: 1.8rem;" class="btn-block btn-primary">
+                                <label for="CategoryId">Select Your Category<em style="color:red;">*</em></label>
+                            </div>
+
+
+                            <div data-toggle="buttons">
+                                @foreach (var cat in Model.CategoryList)
+                    {
+                            <label class="btn btn-group-justified btn-danger" id="option-all" style="text-transform:uppercase;font-family: 'Adobe Gothic Std';">
+                                @Html.RadioButtonFor(m => m.Selected, cat.CategoryNameId, new { @id = @cat.CategoryNameId, @required = "", tabindex = "1", type = "radio" })
+                                @Html.Label(cat.Category)
+                            </label>
+
+                    }
+                            </div>
+
+                            <hr />
+                            <div class="btn-block btn-primary">
+                                <label style="font-family: 'Adobe Gothic Std'; padding: 2% 3%; font-size: 1.8rem;">Select Classification<em style="color:red;">*</em></label>
+                            </div>
+
+                            <div data-toggle="buttons">
+                                @foreach (var comp in Model.ComplaintList)
+                                {
+
+                                    <label class="btn btn-group-justified btn-warning" id="option-all" style="text-transform:uppercase;font-family: 'Adobe Gothic Std';">
+                                        @Html.RadioButtonFor(m => m.CompSelected, comp.ComplaintId, new { @id = @comp.ComplaintId, @required = "", tabindex = "1", type = "radio" })
+                                        @Html.Label(comp.Complaint)
+                                    </label>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+    <div class="col-md-8">
+        <div class="box8">
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="StateId">Select Your State<em style="color:red">*</em></label>
+                    @Html.DropDownListFor(m => m.StateId, Model.StateName, "Select State", new { @id = "StateId", @required = "", tabindex = "1", @class = " form-control input-lg " })
+                    <span id="states1-loading-progress" style="display: none;">Please wait..</span>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Title">Title<em style="color:red">*</em></label>
+                    @Html.TextBoxFor(m => m.Title, new { @id = "surname", @class = " form-control input-lg ", @required = "", @placeholder = "Description of your petition" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="ToWhom">To Whom Are You Writing?<em style="color:red">*</em></label>
+                    @Html.TextBoxFor(m => m.ToWhom, new { @id = "surname", @class = " form-control input-lg ", @required = "", @placeholder = "Who you want to write to" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="WhySign">Your Petition<em style="color:red">*</em></label>
+                    @Html.TextAreaFor(m => m.WhySign, new { @id = "surname", @class = " form-control input-lg ", @required = "", @placeholder = "Reason for public support" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Phone">Phone (Optional)</label>
+                    @Html.TextBoxFor(m => m.Phone, new { @id = "surname", @class = " form-control input-lg ", @placeholder = "Phone number" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <span style=" color:red">
+                        Upload
+                    </span>
+                    <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedFile" />
+                </div>
+            </div>
+            <div class=" col-md-12">
+                <div class="form-group">
+                    <input style="width: 100%; background:darkblue; color:white;" type="submit" value="Create Petiton" class="btn btn-success btn-block" />
+                </div>
+            </div>
+
+            @*<table>
+                <tr>
+                    <td>
+                        <label>State</label>
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(x => x.StateNamesList, Model.StateNamesList, "--Select--", new { @id = "ddlState" });
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>District</label>
+                    </td>
+                    <td id="District">
+                        @Html.DropDownListFor(x => x.DistrictNamesList, new List<SelectListItem>(), "--Select--", new { @id = "ddlDistrict" });
+                    </td>
+                </tr>
+            </table>*@
+        </div>
+    </div>
+                }
+    </div>
+            <div>
+                <h3>Please note that If you are not logged in, you will be prompted to do so</h3>
+                </div>
+
+        </div>
+        
+    </div>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ddlState').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/DropDownList/GetDistrict",
+                data: { stateId: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district = "<select id='ddlDistrict'>";
+                    district = district + '<option value="">--Select--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    district = district + '</select>';
+                    $('#District').html(district);
+                }
+            });
+        });
+    });
+</script>*@ 

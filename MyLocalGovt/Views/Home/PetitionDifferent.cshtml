@@ -1,0 +1,27 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+@{
+    ViewBag.Title = "Choose Category";
+}
+
+<br>
+
+@foreach (var list in Model.PetitionsList)
+{
+
+    <div class="col-md-8">
+
+
+      
+
+
+
+
+
+    </div>
+      <div class="col-md-4">                           
+              <p style="font-size: 30px; font-family:'Times New Roman'; text-align: center; color:blue;"> @Html.DisplayFor(x => list.Category) </p>
+</div>
+
+
+
+}

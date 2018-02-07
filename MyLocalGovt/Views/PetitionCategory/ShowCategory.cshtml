@@ -1,0 +1,89 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+
+@{
+    ViewBag.Title = "Show Category";
+     <link href="~/Content/materialize/css/materialize.css" rel="stylesheet" />
+    <link href="~/Content/materialize/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/materialize/css/materialize.min.css" rel="stylesheet" />
+    <script src="~/Scripts/materialize/materialize.js"></script>
+    <script src="~/Scripts/materialize/materialize.min.js"></script>
+}
+<br>
+<div>
+    <div style="background-image:url('/Images/@ViewBag.CategoryPic')" class=" col-md-8">
+        <div class="fine">
+            
+            <br>
+       <h4 style="color:white"> @ViewBag.Category</h4> 
+            </div>
+    </div>
+   
+    <div class="col-md-4">
+       
+            
+            @foreach (var list in Model.PetitionsList)
+            {
+                <nav>
+                <center>    <a href="~/PetitionCategory/ShowCategory/@list.CategoryNameId">@Html.DisplayFor(m => list.Category)</a> </center>
+                </nav>
+            }
+                
+       
+        
+    </div>
+    <br>
+
+    
+    <hr style="border-color:#ccc5d3" />
+    <div class="row">     
+        <div class="col-md-8">
+            <h4 style="font-family: 'Adobe Gothic Std'">@ViewBag.Category Petitions</h4>
+        </div>
+       
+    </div>
+    <hr style="border-color:#ccc5d3" />
+    
+    <div>
+        <div class="col-md-8">
+    <div class="box4">
+        @foreach (var listSign in Model.PetitionsSignList)
+        {
+
+            <div class="fine3">
+            <div>
+                <div style="margin-bottom:50px;">
+               <h4> @Html.DisplayFor(x => listSign.Title, new { @style = "color: green;" })</h4>
+                </div>
+                <div class="">
+                    <div class="col-md-7">
+                @if (listSign.NameOfFile != null)
+                    
+                {  
+                    <div class="fine2">
+                    <a href="~/PetitionSignature/SignatureIndex/@listSign.PetitionId"> <img style=" width: 25%;" src="~/images/Files/@listSign.NameOfFile" /> </a> 
+                    </div>
+                }
+                else
+                { 
+                    <div class="fine2">
+                    <a href="~/PetitionSignature/SignatureIndex/@listSign.PetitionId"> <img style=" width: 25%;" src="~/images/pet.png" /></a> 
+                        </div>
+                    
+                }
+                        
+</div>
+
+<div class="col-md-5">
+                <a href="~/PetitionSignature/SignatureIndex/@listSign.PetitionId" class="btn btn-large waves-effect waves-purple">Sign Petition</a>
+    </div>
+        </div>
+            </div>
+                </div>
+            <br>
+        }
+        </div>
+
+</div>
+
+        </div>
+</div>

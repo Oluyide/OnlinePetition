@@ -1,0 +1,91 @@
+﻿@model MyLocalGovt.Models.PetitionSignatureModel
+@{
+    ViewBag.Title = "SignatureIndex";
+    <link href="~/Content/styles.css" rel="stylesheet" />
+
+}
+<div class="box9">
+    <div class="col-md-12">
+        <div class="col-md-8">
+            <h3 style="text-transform:uppercase; font-family:'Adobe Gothic Std';">@ViewBag.PetTitle</h3>
+            <p style="text-align:justify;">
+               @if (ViewBag.Image != null)
+               {
+                <img style="width:60%; margin: 0% 2% 2% 0%;" align="left" src="~/Images/Files/@ViewBag.Image">
+               }
+               else
+               {
+                    <img style="width:60%; margin: 0% 2% 2% 0%;" align="left" src="~/Images/white.jpg">
+               }
+                @ViewBag.Petition
+            </p>
+        </div>
+        
+        
+        <div class="col-md-4">
+            <div class="box10">
+               @using (Html.BeginForm("SignatureIndex", "PetitionSignature", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SignFirstName, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "First name" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(m => m.SignLastName, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "Last name" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        @Html.TextAreaFor(m => m.SignEmail, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "Email Adrress" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SignAdd, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "Address" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SignCity, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "City" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SignState, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "State" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(m => m.SignCountry, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "Country" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        @Html.TextAreaFor(m => m.SignWord, new { @id = "surname", @class = "form-control", @required = "", @placeholder = "Why you are signing" })
+                    </div>
+                </div>
+                <div class=" col-md-12">
+                    <div class="form-group">
+                        <input style="width: 100%; background:darkblue; color:white;" type="submit" value="Support Concern" class="btn btn-success btn-block" />
+                    </div>
+                </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

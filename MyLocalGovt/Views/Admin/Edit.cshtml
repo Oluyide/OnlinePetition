@@ -1,0 +1,133 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+
+@{
+    ViewBag.Title = "";
+}
+
+<div>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"].ToString();
+            <a href="#" class="close">&times;</a>
+        </div>
+    }
+    
+</div>
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+
+
+
+    <fieldset>
+        
+
+        @Html.HiddenFor(model => model.PetitionId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Title)
+            @Html.HiddenFor(model => model.Title)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Phone)
+            @Html.HiddenFor(model => model.Phone)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NameOfFile)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.NameOfFile)
+            @Html.HiddenFor(model => model.NameOfFile)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StateId)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.StateId)
+            @Html.HiddenFor(model => model.StateId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToWhom)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.ToWhom)
+            @Html.HiddenFor(model => model.ToWhom)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WhySign)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.WhySign)
+            @Html.DisplayFor(model => model.WhySign)
+
+        </div>
+      
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompSelected)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.CompSelected)
+            @Html.DisplayFor(model => model.CompSelected)
+
+        </div>
+     
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.Selected)
+            @Html.DisplayFor(model => model.Selected)
+
+        </div>
+      
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetDate)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.PetDate)
+            @Html.DisplayFor(model => model.PetDate)
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.UserId)
+            @Html.DisplayFor(model => model.UserId)
+
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsApproved)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsApproved)
+           
+        </div>
+
+       
+
+       
+
+        <p>
+            <input type="submit" value="Edit" class="btn btn-danger form-control" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Admin")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

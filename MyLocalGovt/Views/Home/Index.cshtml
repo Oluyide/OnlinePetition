@@ -1,0 +1,121 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/Layout.cshtml";    
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/materialize/css/styles.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+}
+<div class="boxall">
+    <div class="box2">
+        
+        <a href="~/Home/Petition" class="btn-block btn-lg btnPosition order" style="font-family:'adobe gothic std';font-size: 150%; text-decoration:none; padding: 2% 5%;">Start Here</a>
+
+</div>
+    
+    <div class="box3">
+        <hr style="border-color:#ccc5d3" />
+            
+        <div class="row">
+            <div class="col-md-8">
+                <h6 style="font-family: 'Adobe Gothic Std'; margin-left: 5%;">ADD YOUR SUPPORT TO THE HOTTEST CONCERNS IN NIGERIA</h6>
+        </div>
+            <div class="col-md-4">
+                <h6 style="font-family:'Adobe Gothic Std'; text-align: center; margin-right: 5%;"><span style="color:#1bb415;">1Million+</span> Supports and still Counting</h6>
+            </div>
+        </div>
+       
+        <hr style="border-color:#ccc5d3" />
+
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <div class="box4">
+                    
+
+                    @foreach (var listSign in Model.PetitionsSignList)
+                    {
+
+                        if (listSign.IsApproved == true)
+                        {
+                            
+                       
+                      
+                            
+                        <div class="box5">
+                            
+                            <h5 style="text-transform:uppercase; font-family:'Adobe Gothic Std';">@Html.DisplayFor(x => listSign.Title) </h5> <span><h6><strong>by:(Gregory White) </strong> @listSign.PetDate</h6> </span>
+                            
+                            
+                            
+                            <div class="">
+                                <div class="">
+                                    <span>
+                                         <a href="~/PetitionSignature/SignatureIndex/@listSign.PetitionId"> <img style=" width:100%; height: 200px; margin-bottom: 2%; margin-right: 3%;" src="~/images/Files/@listSign.NameOfFile" /> </a> 
+
+                                         
+                                        <span>
+                                            <a class="btn-block btn-lg btn-danger" href="~/PetitionSignature/SignatureIndex/@listSign.PetitionId" style="text-decoration:none; font-family:'Adobe Gothic Std'; text-align:center;">Support Petition</a>
+                                        </span>
+                                    <ul>
+                                            
+                                           <a href="#" style="color: darkblue;text-decoration:none; font-family:'Adobe Gothic Std';margin-right: 2%; margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-facebook-official"></i></a>
+                                           <a href="#" style="color: darkcyan;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-twitter-square"></i></a>
+                                             <a href="#" style="color: red;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-google-plus-square"></i></a>
+                                             <a href="#" style="color: deepskyblue;text-decoration:none; font-family:'Adobe Gothic Std'; margin-right: 2%;margin-top: 0%;" target="_blank"><i style="font-size: 250%;" class="fa fa-linkedin-square"></i></a>
+                                        <b style="font-family:'Adobe Gothic Std'; color:green;">100, 500 Supporters</b>
+                                        </ul></span>
+                                   
+                                
+                                
+                                    
+                                </div>
+                            </div>
+                  </div>
+                        }
+                    }
+               </div>
+  </div>
+
+            <div class="col-md-5">
+                <div class="row">
+                    <div class=" Page11">
+                        <p style="font-family: Rockwell; font-size: 1.6rem; margin-left: 3%; color:darkgray;">CHOOSE CATEGORIES</p>
+
+                        @foreach (var list in Model.PetitionsList)
+                        {
+
+                            
+                                <hr />
+    <h6>
+        <a style="margin-left: 3%; color: darkblue; font-size: 1.1rem; font-family: Rockwell;" href="~/PetitionCategory/ShowCategory/@list.CategoryNameId">  @Html.DisplayFor(m => list.Category) </a>
+    </h6>
+
+
+
+}
+                            </div>
+                    <div style="margin: 2% 0%;">
+                        <p style="font-family: Rockwell; font-size: 1.6rem; margin-left:0%; background: white; padding: 3%; color: darkgray;">COMMENDATIONS</p>
+
+                        <a class="thumbnail" href="#">
+                            <img src="~/Images/Lagos.jpg" />
+                            <p style="margin-top: 2%; color: black; font-size: 1.1rem; font-family: 'Trebuchet MS';">Lagos State officials packing the dirts away...#LeaveTrashForLAWMA </p>
+                        </a>
+                    </div>
+                    <div style="margin: 2% 0%;">
+                        <a class="thumbnail" href="#">
+                            <img src="~/Images/Water.jpg" />
+                            <p style="margin-top: 2%; color: black; font-size: 1.1rem; font-family: 'Trebuchet MS';">Lagos State Water Corporation installing the newly acquired equipment... #AmbodeIsWorking </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

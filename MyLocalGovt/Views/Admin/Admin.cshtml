@@ -1,0 +1,48 @@
+﻿@model MyLocalGovt.Models.PetitionModel
+
+@{
+    ViewBag.Title = "";
+}
+
+<div class="box4">
+
+    @foreach (var list in Model.AdminList)
+    {
+
+
+        <div class="box5">
+
+            <h5 style="text-transform:uppercase; font-family:'Adobe Gothic Std';">@Html.DisplayFor(x => list.Title) </h5> <span><h6> by: @list.PetDate</h6> </span>
+            <h5 style="text-transform:uppercase; font-family:'Adobe Gothic Std';">@Html.DisplayFor(x => list.IsApproved) </h5> <span><h6> by: @list.PetDate</h6> </span>
+
+
+
+            <div class="">
+                <div class="drop-style">
+                    
+                        <a href="~/PetitionSignature/SignatureIndex/@list.PetitionId"> <img style=" width:50%; height:110%; margin-bottom: 1%;" src="~/images/Files/@list.NameOfFile" /> </a> 
+
+                       
+                        <p style="text-decoration:none; font-family:'Adobe Gothic Std'; margin-top: 0%;">
+                           
+                            <a href="~/Admin/Edit/@list.PetitionId" class="btn-danger btn-lg order" style="font-size: 160%; margin-top: 4%;">Edit</a>
+                         
+                        </p>
+                   
+                </div>
+
+
+
+
+
+
+            </div>
+
+        </div>
+    }
+
+
+</div>
+
+
+
